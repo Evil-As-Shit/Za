@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://bunshmwa043c4"]
+
+[ext_resource type="Script" path="res://Scripts/ui.gd" id="1_y48yy"]
+[ext_resource type="Texture2D" uid="uid://bfgliaqa2ed7q" path="res://Assets/Sprites/furniture_spritesheet.png" id="3_37igo"]
+[ext_resource type="PackedScene" uid="uid://cok4eusvwc2xp" path="res://Scenes/Furniture/table_1x_1.tscn" id="3_u8mdx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bniil"]
+atlas = ExtResource("3_37igo")
+region = Rect2(0, 0, 34, 42)
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_y48yy")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -129.0
+offset_top = 168.0
+offset_right = -9.0
+offset_bottom = 337.0
+
+[node name="table_small" type="TextureButton" parent="Control/BoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_bniil")
+
+[node name="Node2D" type="Node2D" parent="."]
+visible = false
+
+[node name="Table_1x1" parent="Node2D" instance=ExtResource("3_u8mdx")]
+
+[connection signal="pressed" from="Control/BoxContainer/table_small" to="." method="_on_table_small_pressed"]
