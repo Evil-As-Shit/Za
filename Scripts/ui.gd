@@ -13,7 +13,3 @@ func item_selected(item):
 
 func _process(_delta):
 	pass
-
-
-func _on_table_small_pressed():
-	pass

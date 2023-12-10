@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://bqctsts4t2lcc"]
+[gd_scene load_steps=21 format=3 uid="uid://bqctsts4t2lcc"]
 
 [ext_resource type="PackedScene" uid="uid://bunshmwa043c4" path="res://Scenes/ui.tscn" id="1_7ptmq"]
 [ext_resource type="Script" path="res://Scripts/Camera.gd" id="1_56dxt"]
 [ext_resource type="Texture2D" uid="uid://dunx30vj1yv4t" path="res://Assets/Sprites/tile_placeholder.png" id="1_djbdm"]
 [ext_resource type="PackedScene" uid="uid://b6pout81ffp32" path="res://Scenes/worker.tscn" id="1_vr3rk"]
 [ext_resource type="Texture2D" uid="uid://bjlvlvm8dtls5" path="res://Assets/Sprites/walls_spritesheet.png" id="2_a5chk"]
+[ext_resource type="Script" path="res://Scripts/Debug/DebugLabel.gd" id="4_h73vt"]
 [ext_resource type="Script" path="res://Scenes/Cursor.gd" id="6_7kd4n"]
 [ext_resource type="Script" path="res://Scripts/TileMap.gd" id="6_b2o2h"]
 [ext_resource type="Texture2D" uid="uid://dtu4icefrtci5" path="res://Assets/Sprites/cursor.png" id="7_mcv5u"]
@@ -248,7 +249,15 @@ position = Vector2(31, 4)
 zoom = Vector2(2, 2)
 script = ExtResource("1_56dxt")
 
+[node name="BuildingController" type="Node" parent="."]
+script = ExtResource("8_y4eeh")
+
 [node name="UI" parent="." instance=ExtResource("1_7ptmq")]
+
+[node name="DebugLabel" type="Label" parent="UI"]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("4_h73vt")
 
 [node name="TileMap" type="TileMap" parent="."]
 z_index = -1
@@ -280,9 +289,6 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_34tj6")
 autoplay = "default"
 frame_progress = 0.678735
-
-[node name="BuildingController" type="Node" parent="."]
-script = ExtResource("8_y4eeh")
 
 [node name="Table_1x1" parent="." instance=ExtResource("9_hbtpm")]
 position = Vector2(16, -9)
