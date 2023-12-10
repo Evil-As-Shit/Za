@@ -3,7 +3,6 @@ extends CharacterBody2D
 @onready var animation_tree = $AnimationTree
 @onready var state_machine = animation_tree.get("parameters/playback")
 @onready var nav_agent : NavigationAgent2D = get_node("NavigationAgent2D")
-@onready var tile_map = get_node("../TileMap")
 @export var move_speed: float = 50.0
 @export var move_acc: float = 50.0
 enum STATE {IDLE,WALK}
@@ -11,7 +10,12 @@ var time = false
 var move_direction = Vector2.ZERO
 var current_state = STATE.IDLE : set = set_current_state
 
+var tile_map
+
 var is_debug_print: bool = false
+
+func _ready():
+	tile_map = GameData.tile_map
 
 func set_current_state(new_state):
 	if(new_state == current_state):
