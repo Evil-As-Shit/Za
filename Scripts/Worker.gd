@@ -11,6 +11,8 @@ var time = false
 var move_direction = Vector2.ZERO
 var current_state = STATE.IDLE : set = set_current_state
 
+var is_debug_print: bool = false
+
 func set_current_state(new_state):
 	if(new_state == current_state):
 		return
@@ -27,15 +29,15 @@ func _input(event):
 		var clicked_cell = tile_map.local_to_map(tile_map.get_local_mouse_position())
 		var atlas_coords = tile_map.get_cell_atlas_coords(0, clicked_cell)
 		
-		print("cell location:",clicked_cell)
-		print("atlas coords(index 0):",atlas_coords)
-		print("alternate tile ID(index 0):",tile_map.get_cell_alternative_tile(0,clicked_cell))
+		if (is_debug_print) : print("cell location:",clicked_cell)
+		if (is_debug_print) : print("atlas coords(index 0):",atlas_coords)
+		if (is_debug_print) : print("alternate tile ID(index 0):",tile_map.get_cell_alternative_tile(0,clicked_cell))
 
 	if event.is_action_pressed("click_right"):
 		var clicked_cell = tile_map.local_to_map(tile_map.get_local_mouse_position())
 		var atlas_coords = tile_map.get_cell_atlas_coords(0, clicked_cell)
 		tile_map.set_cell(0,clicked_cell,1,atlas_coords)
-		print("cell changed")
+		if (is_debug_print) : print("cell changed")
 
 func _physics_process(_delta:float)->void:
 	if nav_agent.is_navigation_finished():
