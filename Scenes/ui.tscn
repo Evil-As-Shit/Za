@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://bunshmwa043c4"]
 
-[ext_resource type="Script" path="res://Scripts/ui.gd" id="1_y48yy"]
+[ext_resource type="Script" path="res://Scripts/GUI/ui.gd" id="1_qf18t"]
 [ext_resource type="Texture2D" uid="uid://bfgliaqa2ed7q" path="res://Assets/Sprites/furniture_spritesheet.png" id="3_37igo"]
-[ext_resource type="Script" path="res://Scripts/UIBUtton.gd" id="3_apy50"]
 [ext_resource type="PackedScene" uid="uid://cok4eusvwc2xp" path="res://Scenes/Furniture/table_1x_1.tscn" id="3_u8mdx"]
+[ext_resource type="Script" path="res://Scripts/GUI/UIBUtton.gd" id="3_ucfmw"]
 [ext_resource type="Texture2D" uid="uid://c35e7ghsbapk6" path="res://Assets/Sprites/walk.png" id="4_df54m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bniil"]
@@ -15,7 +15,7 @@ atlas = ExtResource("3_37igo")
 region = Rect2(0, 42, 50, 42)
 
 [node name="UI" type="CanvasLayer"]
-script = ExtResource("1_y48yy")
+script = ExtResource("1_qf18t")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -40,13 +40,15 @@ vertical = true
 texture_filter = 1
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_bniil")
-script = ExtResource("3_apy50")
+stretch_mode = 3
+script = ExtResource("3_ucfmw")
 
 [node name="build_table_1x2" type="TextureButton" parent="Control/BoxContainer"]
 texture_filter = 1
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_h3bog")
-script = ExtResource("3_apy50")
+stretch_mode = 3
+script = ExtResource("3_ucfmw")
 
 [node name="debug_walk" type="Button" parent="Control/BoxContainer"]
 layout_mode = 2
@@ -56,7 +58,7 @@ flat = true
 icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true
-script = ExtResource("3_apy50")
+script = ExtResource("3_ucfmw")
 
 [node name="Node2D" type="Node2D" parent="."]
 
