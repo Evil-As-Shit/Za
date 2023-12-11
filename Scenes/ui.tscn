@@ -36,7 +36,7 @@ offset_right = -95.0
 offset_bottom = 210.0
 vertical = true
 
-[node name="build_table_small" type="TextureButton" parent="Control/BoxContainer"]
+[node name="build_table_1x_1" type="TextureButton" parent="Control/BoxContainer"]
 texture_filter = 1
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_bniil")
@@ -61,5 +61,6 @@ expand_icon = true
 script = ExtResource("3_ucfmw")
 
 [node name="Node2D" type="Node2D" parent="."]
+visible = false
 
 [node name="Table_1x1" parent="Node2D" instance=ExtResource("3_u8mdx")]

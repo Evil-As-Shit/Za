@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bqctsts4t2lcc"]
+[gd_scene load_steps=24 format=3 uid="uid://bqctsts4t2lcc"]
 
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_0f33u"]
 [ext_resource type="PackedScene" uid="uid://bunshmwa043c4" path="res://Scenes/ui.tscn" id="1_7ptmq"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://Scripts/GUI/TileMap.gd" id="8_hi6kt"]
 [ext_resource type="PackedScene" uid="uid://cok4eusvwc2xp" path="res://Scenes/Furniture/table_1x_1.tscn" id="9_hbtpm"]
 [ext_resource type="Script" path="res://Scripts/GUI/Cursor.gd" id="10_unskv"]
+[ext_resource type="PackedScene" uid="uid://c6cq0tjrd6lvd" path="res://Scenes/Furniture/table_1x2.tscn" id="14_xn3jh"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_nd06k"]
 vertices = PackedVector2Array(-16, 0, 0, -8, 16, 0, 0, 8)
@@ -252,8 +253,15 @@ position = Vector2(31, 4)
 zoom = Vector2(2, 2)
 script = ExtResource("1_56dxt")
 
-[node name="BuildingController" type="Node" parent="."]
+[node name="BuildingController" type="Node2D" parent="."]
+y_sort_enabled = true
 script = ExtResource("3_dura0")
+
+[node name="Table_1x1" parent="BuildingController" instance=ExtResource("9_hbtpm")]
+position = Vector2(16, -9)
+
+[node name="Table_1x2" parent="BuildingController" instance=ExtResource("14_xn3jh")]
+position = Vector2(32, -1)
 
 [node name="InputController" type="Node2D" parent="."]
 script = ExtResource("4_lk51g")
@@ -295,6 +303,3 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_34tj6")
 autoplay = "default"
 frame_progress = 0.678735
-
-[node name="Table_1x1" parent="." instance=ExtResource("9_hbtpm")]
-position = Vector2(16, -9)

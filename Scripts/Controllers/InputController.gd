@@ -11,10 +11,10 @@ func _process(_delta):
 func _input(event: InputEvent):
 	if (event.is_action_pressed("click_left")):
 		if (GameData.button_hovered != ""):
-			print("a button was pressed! ", GameData.button_hovered)
 			if (GameData.button_hovered == "debug_walk"): GameData.game_mode = "action_walk"
 			if (GameData.button_hovered.begins_with("build_")):
 				GameData.game_mode = "action_build"
+				SignalController.emit_signal("build", GameData.button_hovered.replace("build_", ""))
 		elif (GameData.game_mode == "action_walk"):
 			SignalController.emit_signal("debug_walk_to", get_global_mouse_position())
 		elif (GameData.game_mode == "action_build"):
