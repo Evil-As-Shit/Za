@@ -16,6 +16,8 @@ var is_debug_print: bool = false
 
 func _ready():
 	tile_map = GameData.tile_map
+	
+	SignalController.debug_walk_to.connect(self._on_debug_walk_to)
 
 func set_current_state(new_state):
 	if(new_state == current_state):
@@ -28,15 +30,6 @@ func set_current_state(new_state):
 	current_state = new_state
 
 func _input(event):
-	if event.is_action_pressed("click_left"):
-		nav_agent.target_position = get_global_mouse_position()
-		var clicked_cell = tile_map.local_to_map(tile_map.get_local_mouse_position())
-		var atlas_coords = tile_map.get_cell_atlas_coords(0, clicked_cell)
-		
-		if (is_debug_print) : print("cell location:",clicked_cell)
-		if (is_debug_print) : print("atlas coords(index 0):",atlas_coords)
-		if (is_debug_print) : print("alternate tile ID(index 0):",tile_map.get_cell_alternative_tile(0,clicked_cell))
-
 	if event.is_action_pressed("click_right"):
 		var clicked_cell = tile_map.local_to_map(tile_map.get_local_mouse_position())
 		var atlas_coords = tile_map.get_cell_atlas_coords(0, clicked_cell)
@@ -60,3 +53,13 @@ func update_animation_parameters(move_input : Vector2):
 func _on_navigation_agent_2d_velocity_computed(safe_velocity):
 	velocity = safe_velocity
 	move_and_slide()
+
+func _on_debug_walk_to(pos:Vector2):
+	nav_agent.target_position = pos
+	var clicked_cell = tile_map.local_to_map(pos)
+	var atlas_coords = tile_map.get_cell_atlas_coords(0, clicked_cell)
+
+	if (is_debug_print) : print("walking to ", pos)
+	if (is_debug_print) : print("cell location:",clicked_cell)
+	if (is_debug_print) : print("atlas coords(index 0):",atlas_coords)
+	if (is_debug_print) : print("alternate tile ID(index 0):",tile_map.get_cell_alternative_tile(0,clicked_cell))

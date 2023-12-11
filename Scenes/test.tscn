@@ -255,7 +255,7 @@ script = ExtResource("1_56dxt")
 [node name="BuildingController" type="Node" parent="."]
 script = ExtResource("3_dura0")
 
-[node name="InputController" type="Node" parent="."]
+[node name="InputController" type="Node2D" parent="."]
 script = ExtResource("4_lk51g")
 
 [node name="UI" parent="." instance=ExtResource("1_7ptmq")]
