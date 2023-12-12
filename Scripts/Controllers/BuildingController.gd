@@ -1,12 +1,13 @@
-extends Node
+extends Node2D
 
 #@onready var table_small = preload("res://Scenes/Furniture/table_1x1.tscn")
 
 var tile_map: TileMap
+var preview_build: Node2D
 
 func _ready():
 	tile_map = GameData.tile_map
-	SignalController.build.connect(self._on_build)
+	SignalController.build_start.connect(self._on_build)
 	
 #	set current item tiles
 	for child in get_children():
@@ -18,9 +19,19 @@ func _ready():
 	
 
 func _process(_delta):
-	if (GameData.game_mode != "action_build"): return
+	if (GameData.game_mode != "action_build"):
+		_clear_preview()
+		return
+	preview_build.position = get_local_mouse_position()
 #	print("Building!")
 
 func _on_build(to_build:String):
-	print("Building ", to_build)
-	
+	_clear_preview()
+	var path = str("res://Scenes/Furniture/", to_build, ".tscn")
+	preview_build = load(path).instantiate()
+	add_child(preview_build)
+
+func _clear_preview():
+	if (preview_build != null):
+		preview_build.queue_free()
+		preview_build = null

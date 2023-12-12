@@ -14,7 +14,7 @@ func _input(event: InputEvent):
 			if (GameData.button_hovered == "debug_walk"): GameData.game_mode = "action_walk"
 			if (GameData.button_hovered.begins_with("build_")):
 				GameData.game_mode = "action_build"
-				SignalController.emit_signal("build", GameData.button_hovered.replace("build_", ""))
+				SignalController.emit_signal("build_start", GameData.button_hovered.replace("build_", ""))
 		elif (GameData.game_mode == "action_walk"):
 			SignalController.emit_signal("debug_walk_to", get_global_mouse_position())
 		elif (GameData.game_mode == "action_build"):
