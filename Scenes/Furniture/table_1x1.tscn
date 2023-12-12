@@ -12,3 +12,5 @@ texture = ExtResource("1_ilg2b")
 offset = Vector2(0, -12.5)
 region_enabled = true
 region_rect = Rect2(0, 0, 34, 42)
+
+[node name="TileBlockable" type="Node2D" parent="."]

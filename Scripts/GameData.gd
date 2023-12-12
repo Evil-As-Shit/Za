@@ -2,7 +2,7 @@ extends Node
 
 #Autoloaded
 
-var tile_map: Node
+var tile_map: TileMap
 var button_hovered: String = ""
 var game_mode: String = ""
 

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bfgliaqa2ed7q" path="res://Assets/Sprites/furniture_spritesheet.png" id="1_jpcxa"]
 
-[node name="Table_1x1" type="Node2D"]
+[node name="Table_1x2" type="Node2D"]
 y_sort_enabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -12,3 +12,8 @@ texture = ExtResource("1_jpcxa")
 offset = Vector2(8, -13.5)
 region_enabled = true
 region_rect = Rect2(0, 42, 50, 44)
+
+[node name="TileBlockable" type="Node2D" parent="."]
+
+[node name="TileBlockable2" type="Node2D" parent="."]
+position = Vector2(17, -7)
