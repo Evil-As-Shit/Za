@@ -4,6 +4,7 @@ extends Node2D
 
 var tile_map: TileMap
 var preview_build: Node2D
+var vector2i_null: Vector2i = Vector2i(-99999, -99999)
 
 func _ready():
 	tile_map = GameData.tile_map
@@ -22,7 +23,9 @@ func _process(_delta):
 	if (GameData.game_mode != "action_build"):
 		_clear_preview()
 		return
-	preview_build.position = get_local_mouse_position()
+	var pos = _get_preview_tile_pos()
+	if (pos == vector2i_null): pos = get_local_mouse_position()
+	preview_build.position = pos
 #	print("Building!")
 
 func _on_build(to_build:String):
@@ -35,3 +38,10 @@ func _clear_preview():
 	if (preview_build != null):
 		preview_build.queue_free()
 		preview_build = null
+
+func _get_preview_tile_pos() -> Vector2i:
+	var pos = vector2i_null
+	var clicked_cell:Vector2i = tile_map.local_to_map(tile_map.get_local_mouse_position())
+	var cell_id:int = tile_map.get_cell_source_id(0, clicked_cell)
+	if (cell_id == 0): pos = tile_map.map_to_local(clicked_cell)
+	return pos
