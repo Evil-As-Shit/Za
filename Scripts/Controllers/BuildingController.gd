@@ -40,8 +40,15 @@ func _clear_preview():
 		preview_build = null
 
 func _get_preview_tile_pos() -> Vector2i:
-	var pos = vector2i_null
-	var clicked_cell:Vector2i = tile_map.local_to_map(tile_map.get_local_mouse_position())
-	var cell_id:int = tile_map.get_cell_source_id(0, clicked_cell)
-	if (cell_id == 0): pos = tile_map.map_to_local(clicked_cell)
-	return pos
+	var pos:Vector2i = vector2i_null
+	var is_buildable:bool = true
+	for child in preview_build.get_children():
+		if (child.name.begins_with("TileBlockable")):
+			var clicked_cell = tile_map.local_to_map(tile_map.get_local_mouse_position() + child.position)
+			var cell_id:int = tile_map.get_cell_source_id(0, clicked_cell)
+			if (cell_id == 0):
+				if (pos == vector2i_null): pos = tile_map.map_to_local(clicked_cell)
+			else:
+				is_buildable = false
+	if (is_buildable): return pos
+	return vector2i_null
