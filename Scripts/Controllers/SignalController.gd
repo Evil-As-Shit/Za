@@ -5,3 +5,4 @@ var is_building : bool = false
 
 signal debug_walk_to
 signal build_start
+signal build_complete

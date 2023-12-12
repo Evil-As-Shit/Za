@@ -18,7 +18,8 @@ func _input(event: InputEvent):
 		elif (GameData.game_mode == "action_walk"):
 			SignalController.emit_signal("debug_walk_to", get_global_mouse_position())
 		elif (GameData.game_mode == "action_build"):
-			print("building!")
+			SignalController.emit_signal("build_complete")
+			GameData.game_mode = "action_walk"
 		else:
 			print("i don't know what to do! ")
 		
