@@ -12,4 +12,4 @@ func item_selected(item):
 	
 
 func _process(_delta):
-	pass
+	$Label.text = str("$", GameData.player_money)

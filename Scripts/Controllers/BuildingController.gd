@@ -29,6 +29,7 @@ func _on_build(to_build:String):
 	var path = str("res://Scenes/Furniture/", to_build, ".tscn")
 	preview_build = load(path).instantiate()
 	add_child(preview_build)
+	GameData.item_to_build = to_build
 
 func _on_build_complete():
 	if (preview_build == null): return
@@ -36,6 +37,7 @@ func _on_build_complete():
 	if (pos == vector2i_null): return
 	_set_tile_blockables(preview_build)
 	preview_build = null
+	GameData.item_to_build = ""
 
 func _set_tile_blockables(item:Node):
 	for child in item.get_children():
@@ -48,6 +50,7 @@ func _clear_preview():
 	if (preview_build != null):
 		preview_build.queue_free()
 		preview_build = null
+		GameData.item_to_build = ""
 
 func _get_preview_tile_pos() -> Vector2i:
 	var pos:Vector2i = vector2i_null

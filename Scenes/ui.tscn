@@ -75,3 +75,8 @@ script = ExtResource("3_ucfmw")
 visible = false
 
 [node name="Table_1x1" parent="Node2D" instance=ExtResource("3_u8mdx")]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "$0"

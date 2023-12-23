@@ -303,8 +303,10 @@ script = ExtResource("4_lk51g")
 [node name="UI" parent="." instance=ExtResource("1_7ptmq")]
 
 [node name="DebugLabel" type="Label" parent="UI"]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_right = 1280.0
+offset_bottom = 26.0
+text = "Debug Label set in code"
+horizontal_alignment = 2
 script = ExtResource("4_h73vt")
 
 [node name="Worker" parent="." instance=ExtResource("1_vr3rk")]

@@ -18,8 +18,12 @@ func _input(event: InputEvent):
 		elif (GameData.game_mode == "action_walk"):
 			SignalController.emit_signal("debug_walk_to", get_global_mouse_position())
 		elif (GameData.game_mode == "action_build"):
-			SignalController.emit_signal("build_complete")
-			GameData.game_mode = "action_walk"
+			if (MoneyController._can_afford_build()):
+				MoneyController._purchase_build()
+				SignalController.emit_signal("build_complete")
+				GameData.game_mode = "action_walk"
+			else:
+				print("You can't afford that!")
 		else:
 			print("i don't know what to do! ")
 		
