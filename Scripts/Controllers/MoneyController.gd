@@ -13,10 +13,6 @@ func _ready():
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 static func _can_afford_build() -> bool:
 	return GameData.player_money >= cost_dict[GameData.item_to_build]
 
