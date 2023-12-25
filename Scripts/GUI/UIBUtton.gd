@@ -1,5 +1,7 @@
 extends BaseButton
 
+class_name UIButton
+
 var is_debug_print: bool = false
 
 func _ready():

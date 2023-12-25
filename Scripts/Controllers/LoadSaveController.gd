@@ -3,9 +3,13 @@ extends Node
 class_name LoadSaveController
 
 static func save_game():
-	var save_file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
+	var dir:DirAccess = DirAccess.open("user://")
+	if (!dir.dir_exists(GameData.save_dir)):
+		dir.make_dir(GameData.save_dir)
+		
+	var save_file = FileAccess.open(str("user://",GameData.save_dir,"/savegame.save"), FileAccess.WRITE)
 	
-	var tile_map_dict = {}
+	var save_file_dict = {}
 	
 	var layer_dict:Dictionary = {}
 	for i in range(GameData.tile_map.get_layers_count()):
@@ -24,18 +28,18 @@ static func save_game():
 			}
 			tile_array.append(tile_dict)
 		layer_dict[i] = tile_array
-	tile_map_dict["tile_layers"] = layer_dict
+	save_file_dict["tile_layers"] = layer_dict
 	
-	save_file.store_line(JSON.stringify(tile_map_dict))
+	save_file.store_line(JSON.stringify(save_file_dict))
 
-static func load_game():
-	if not FileAccess.file_exists("user://savegame.save"):
-		print("Could not find save file")
+static func load_game(save_file_name:String):
+	if not FileAccess.file_exists(str("user://",GameData.save_dir,"/",save_file_name)):
+		print("Could not find save file: ", save_file_name)
 		return
 	
 	GameData.tile_map.clear()
 	
-	var save_file = FileAccess.open("user://savegame.save", FileAccess.READ)
+	var save_file = FileAccess.open(str("user://",GameData.save_dir,"/",save_file_name), FileAccess.READ)
 	while (save_file.get_position() < save_file.get_length()):
 		var json_string = save_file.get_line()
 		var json = JSON.new()

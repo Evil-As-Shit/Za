@@ -15,6 +15,10 @@ func _input(event: InputEvent):
 			if (GameData.button_hovered.begins_with("build_")):
 				GameData.game_mode = "action_build"
 				SignalController.emit_signal("build_start", GameData.button_hovered.replace("build_", ""))
+			if (GameData.button_hovered.begins_with("loadgame_")):
+				LoadSaveController.load_game(str(GameData.button_hovered.replace("loadgame_", ""), ".save"))
+			if (GameData.button_hovered.begins_with("DebugLoadGameButton")):
+				SignalController.emit_signal("toggle_load_menu")
 		elif (GameData.game_mode == "action_walk"):
 			SignalController.emit_signal("debug_walk_to", get_global_mouse_position())
 		elif (GameData.game_mode == "action_build"):
@@ -25,5 +29,5 @@ func _input(event: InputEvent):
 			else:
 				print("You can't afford that!")
 		else:
-			print("i don't know what to do! ")
+			print("InputController: I don't know what to do! ", GameData.button_hovered)
 		
