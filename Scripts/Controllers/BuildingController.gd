@@ -10,6 +10,7 @@ func _ready():
 	tile_map = GameData.tile_map
 	SignalController.build_start.connect(self._on_build)
 	SignalController.build_complete.connect(self._on_build_complete)
+	SignalController.load_item.connect(self._on_load_item)
 	
 #	set current item tiles
 	for child in get_children():
@@ -66,3 +67,11 @@ func _get_preview_tile_pos() -> Vector2i:
 				is_buildable = false
 	if (is_buildable): return pos
 	return vector2i_null
+
+func _on_load_item(id:int, scene_file_name:String, pos_x:int, pos_y:int):
+	print("building ",scene_file_name)
+	var path = str("res://Scenes/Furniture/", scene_file_name, ".tscn")
+	var item:Node2D = load(path).instantiate()
+	item.position = Vector2(pos_x, pos_y)
+	add_child(item)
+	_set_tile_blockables(item)

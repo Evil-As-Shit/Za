@@ -62,4 +62,17 @@ static func load_game(save_file_name:String):
 		var node_data = json.get_data()
 		for layer_index in node_data["tile_layers"]:
 			for tile_dict in node_data["tile_layers"][layer_index]:
-				GameData.tile_map.set_cell(int(layer_index), Vector2i(tile_dict["pos_x"], tile_dict["pos_y"]), tile_dict["source_id"], Vector2i(tile_dict["atlas_coord_x"], tile_dict["atlas_coord_y"]), 0)
+				GameData.tile_map.set_cell(
+					int(layer_index),
+					Vector2i(tile_dict["pos_x"],
+					tile_dict["pos_y"]),
+					tile_dict["source_id"],
+					Vector2i(tile_dict["atlas_coord_x"],
+					tile_dict["atlas_coord_y"]), 0)
+		for item_dict in node_data["items"]:
+			SignalController.emit_signal("load_item",
+				int(item_dict["id"]),
+				item_dict["scene_file_name"],
+				int(item_dict["pos_x"]),
+				int(item_dict["pos_y"])
+			)
