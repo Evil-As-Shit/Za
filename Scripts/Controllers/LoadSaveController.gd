@@ -11,6 +11,7 @@ static func save_game():
 	
 	var save_file_dict = {}
 	
+	# tiles
 	var layer_dict:Dictionary = {}
 	for i in range(GameData.tile_map.get_layers_count()):
 		var tile_array:Array = []
@@ -24,20 +25,30 @@ static func save_game():
 				"pos_y": y,
 				"source_id": source_id,
 				"atlas_coord_x": atlas_coords.x,
-				"atlas_coord_y": atlas_coords.y
+				"atlas_coord_y": atlas_coords.y,
 			}
 			tile_array.append(tile_dict)
 		layer_dict[i] = tile_array
 	save_file_dict["tile_layers"] = layer_dict
 	
+	# items
+	var item_array:Array = []
+	for key in GameData.item_nodes:
+		var item:Node2D = GameData.item_nodes[key]
+		var item_dict = {
+			"id": key,
+			"pos_x": item.position.x,
+			"pos_y": item.position.y,
+			"scene_file_name": item.scene_file_path.split('/')[-1].replace(".tscn","")
+		}
+		item_array.append(item_dict)
+	save_file_dict["items"] = item_array
 	save_file.store_line(JSON.stringify(save_file_dict))
 
 static func load_game(save_file_name:String):
 	if not FileAccess.file_exists(str("user://",GameData.save_dir,"/",save_file_name)):
 		print("Could not find save file: ", save_file_name)
 		return
-	
-	GameData.tile_map.clear()
 	
 	var save_file = FileAccess.open(str("user://",GameData.save_dir,"/",save_file_name), FileAccess.READ)
 	while (save_file.get_position() < save_file.get_length()):

@@ -14,6 +14,7 @@ func _ready():
 #	set current item tiles
 	for child in get_children():
 		_set_tile_blockables(child)
+		GameData.item_nodes[GameData._get_next_id()] = child
 
 func _process(_delta):
 	if (GameData.game_mode != "action_build"):
