@@ -17,6 +17,7 @@ func _input(event: InputEvent):
 				SignalController.emit_signal("build_start", GameData.button_hovered.replace("build_", ""))
 			if (GameData.button_hovered.begins_with("loadgame_")):
 				SignalController.emit_signal("load_game", str(GameData.button_hovered.replace("loadgame_", ""), ".save"))
+				GameData.button_hovered = ""
 			if (GameData.button_hovered.begins_with("DebugLoadGameButton")):
 				SignalController.emit_signal("toggle_load_menu")
 		elif (GameData.game_mode == "action_walk"):

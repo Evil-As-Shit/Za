@@ -5,6 +5,7 @@ extends Control
 func _ready():
 	visible = false
 	SignalController.toggle_load_menu.connect(self._on_load_menu)
+	SignalController.load_game.connect(self._on_load_game)
 	
 	var dir:DirAccess = DirAccess.open(str("user://",GameData.save_dir))
 	if (dir):
@@ -12,7 +13,6 @@ func _ready():
 		var file_name = dir.get_next()
 		while file_name != "":
 			if !dir.current_is_dir():
-				print("Found file: ", file_name)
 				var button:Button = Button.new()
 				button.name = "loadgame_" + file_name.replace(".save", "")
 				button.set_script(UIButton)
@@ -22,3 +22,6 @@ func _ready():
 			
 func _on_load_menu():
 	visible = !visible
+
+func _on_load_game(_na):
+	visible = false

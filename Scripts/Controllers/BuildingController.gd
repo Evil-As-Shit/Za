@@ -69,7 +69,6 @@ func _get_preview_tile_pos() -> Vector2i:
 	return vector2i_null
 
 func _on_load_item(id:int, scene_file_name:String, pos_x:int, pos_y:int):
-	print("building ",scene_file_name)
 	var path = str("res://Scenes/Furniture/", scene_file_name, ".tscn")
 	var item:Node2D = load(path).instantiate()
 	item.position = Vector2(pos_x, pos_y)
