@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bqctsts4t2lcc"]
+[gd_scene load_steps=26 format=3 uid="uid://bqctsts4t2lcc"]
 
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_0f33u"]
 [ext_resource type="PackedScene" uid="uid://bunshmwa043c4" path="res://Scenes/ui.tscn" id="1_7ptmq"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cok4eusvwc2xp" path="res://Scenes/Furniture/table_1x1.tscn" id="9_hbtpm"]
 [ext_resource type="PackedScene" uid="uid://maqeehcp8lf3" path="res://Scenes/Furniture/table_2x2.tscn" id="9_rdjt5"]
 [ext_resource type="Script" path="res://Scripts/GUI/Cursor.gd" id="10_unskv"]
+[ext_resource type="Script" path="res://Scripts/Controllers/NPCController.gd" id="13_e7pda"]
 [ext_resource type="PackedScene" uid="uid://c6cq0tjrd6lvd" path="res://Scenes/Furniture/table_1x2.tscn" id="14_xn3jh"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_nd06k"]
@@ -300,8 +301,15 @@ text = "Debug Label set in code"
 horizontal_alignment = 2
 script = ExtResource("4_h73vt")
 
-[node name="Worker" parent="." instance=ExtResource("1_vr3rk")]
+[node name="NPCController" type="Node2D" parent="."]
+y_sort_enabled = true
+script = ExtResource("13_e7pda")
+
+[node name="Worker" parent="NPCController" instance=ExtResource("1_vr3rk")]
 position = Vector2(134, 47)
+
+[node name="Worker3" parent="NPCController" instance=ExtResource("1_vr3rk")]
+position = Vector2(46, -1)
 
 [node name="Cursor" type="Node2D" parent="."]
 position = Vector2(-16, 0)

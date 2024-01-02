@@ -74,3 +74,4 @@ func _on_load_item(id:int, scene_file_name:String, pos_x:int, pos_y:int):
 	item.position = Vector2(pos_x, pos_y)
 	add_child(item)
 	_set_tile_blockables(item)
+	GameData.item_nodes[id] = item

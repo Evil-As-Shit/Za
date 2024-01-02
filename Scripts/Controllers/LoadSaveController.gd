@@ -42,7 +42,22 @@ static func save_game():
 			"scene_file_name": item.scene_file_path.split('/')[-1].replace(".tscn","")
 		}
 		item_array.append(item_dict)
+		if (key > GameData.next_id): GameData.next_id = key
 	save_file_dict["items"] = item_array
+	
+	# NPCs
+	var npc_array:Array = []
+	for key in GameData.npc_nodes:
+		var npc:Node2D = GameData.npc_nodes[key]
+		var npc_dict = {
+			"id": key,
+			"pos_x": npc.position.x,
+			"pos_y": npc.position.y,
+		}
+		npc_array.append(npc_dict)
+		if (key > GameData.next_id): GameData.next_id = key
+	save_file_dict["npcs"] = npc_array
+	
 	save_file.store_line(JSON.stringify(save_file_dict))
 
 static func load_game(save_file_name:String):
@@ -75,4 +90,10 @@ static func load_game(save_file_name:String):
 				item_dict["scene_file_name"],
 				int(item_dict["pos_x"]),
 				int(item_dict["pos_y"])
+			)
+		for npc_dict in node_data["npcs"]:
+			SignalController.emit_signal("load_npc",
+				int(npc_dict["id"]),
+				int(npc_dict["pos_x"]),
+				int(npc_dict["pos_y"])
 			)

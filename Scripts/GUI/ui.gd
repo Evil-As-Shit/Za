@@ -6,7 +6,7 @@ func _ready():
 #	SignalController.placeables.connect(item_selected)
 	pass
 	
-func item_selected(item):
+func item_selected(_item):
 	
 	pass
 	
