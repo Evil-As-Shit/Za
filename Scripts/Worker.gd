@@ -10,7 +10,7 @@ var time = false
 var move_direction = Vector2.ZERO
 var current_state = STATE.IDLE : set = set_current_state
 
-var tile_map
+var tile_map:TileMap
 
 var is_debug_print: bool = false
 
@@ -56,7 +56,7 @@ func _on_navigation_agent_2d_velocity_computed(safe_velocity):
 
 func _on_debug_walk_to(pos:Vector2):
 	nav_agent.target_position = pos
-	var clicked_cell = tile_map.local_to_map(pos)
+	var clicked_cell:Vector2i = tile_map.local_to_map(pos)
 	var atlas_coords = tile_map.get_cell_atlas_coords(0, clicked_cell)
 
 	if (is_debug_print) : print("walking to ", pos)

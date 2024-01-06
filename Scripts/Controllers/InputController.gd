@@ -1,6 +1,9 @@
 extends Node2D
 
+var tile_map:TileMap
+
 func _ready():
+	tile_map = GameData.tile_map
 	print("Viewport resolution is: ", get_viewport().get_visible_rect().size)
 	pass
 
@@ -31,4 +34,11 @@ func _input(event: InputEvent):
 				print("You can't afford that!")
 		else:
 			print("InputController: I don't know what to do! ", GameData.button_hovered)
+	elif (event is InputEventMouseMotion):
+		var pos = get_global_mouse_position()
+		var clicked_cell:Vector2i = tile_map.local_to_map(pos)
+		GameData.tile_hovered = str(clicked_cell.x, ", ", clicked_cell.y)
 		
+		var is_debug_print = false
+		if (is_debug_print) : print("Mouse Motion at ", pos)
+		if (is_debug_print) : print("cell location:",clicked_cell)

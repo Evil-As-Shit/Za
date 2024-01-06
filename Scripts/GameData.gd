@@ -8,6 +8,7 @@ var npc_nodes:Dictionary = {}
 
 var game_mode: String = ""
 var button_hovered: String = ""
+var tile_hovered: String = ""
 var item_to_build: String = ""
 var save_dir: String = "save_files"
 
