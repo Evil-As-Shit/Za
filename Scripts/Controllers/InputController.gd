@@ -36,9 +36,12 @@ func _input(event: InputEvent):
 			print("InputController: I don't know what to do! ", GameData.button_hovered)
 	elif (event is InputEventMouseMotion):
 		var pos = get_global_mouse_position()
-		var clicked_cell:Vector2i = tile_map.local_to_map(pos)
-		GameData.tile_hovered = str(clicked_cell.x, ", ", clicked_cell.y)
+		var cell:Vector2i = tile_map.local_to_map(pos)
+		GameData.tile_hovered = str(cell.x, ", ", cell.y)
+		GameData.item_hovered = ""
+		if (GameData.tile_item.has(GameData._get_tile_id(cell))):
+			GameData.item_hovered = str(GameData.tile_item[GameData._get_tile_id(cell)])
 		
 		var is_debug_print = false
 		if (is_debug_print) : print("Mouse Motion at ", pos)
-		if (is_debug_print) : print("cell location:",clicked_cell)
+		if (is_debug_print) : print("cell location:",cell)

@@ -14,8 +14,9 @@ func _ready():
 	
 #	set current item tiles
 	for child in get_children():
-		_set_tile_blockables(child)
-		GameData.item_nodes[GameData._get_next_id()] = child
+		var id:int = GameData._get_next_id()
+		_set_tile_blockables(id, child)
+		GameData.item_nodes[id] = child
 
 func _process(_delta):
 	if (GameData.game_mode != "action_build"):
@@ -37,16 +38,17 @@ func _on_build_complete():
 	if (preview_build == null): return
 	var pos:Vector2i = _get_preview_tile_pos()
 	if (pos == vector2i_null): return
-	_set_tile_blockables(preview_build)
+	_set_tile_blockables(GameData._get_next_id(), preview_build)
 	preview_build = null
 	GameData.item_to_build = ""
 
-func _set_tile_blockables(item:Node):
+func _set_tile_blockables(id:int, item:Node):
 	for child in item.get_children():
 		if (child.name.begins_with("TileBlockable")):
-			var clicked_cell = tile_map.local_to_map(child.global_position)
-			var atlas_coords = tile_map.get_cell_atlas_coords(0, clicked_cell)
-			tile_map.set_cell(0,clicked_cell,1,atlas_coords)
+			var cell = tile_map.local_to_map(child.global_position)
+			var atlas_coords = tile_map.get_cell_atlas_coords(0, cell)
+			tile_map.set_cell(0, cell, 1, atlas_coords)
+			GameData.tile_item[GameData._get_tile_id(cell)] = id
 
 func _clear_preview():
 	if (preview_build != null):
@@ -73,5 +75,5 @@ func _on_load_item(id:int, scene_file_name:String, pos_x:int, pos_y:int):
 	var item:Node2D = load(path).instantiate()
 	item.position = Vector2(pos_x, pos_y)
 	add_child(item)
-	_set_tile_blockables(item)
+	_set_tile_blockables(id, item)
 	GameData.item_nodes[id] = item

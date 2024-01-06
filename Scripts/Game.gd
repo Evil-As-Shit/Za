@@ -16,5 +16,6 @@ func _on_load_game(save_file:String):
 	GameData.tile_map.clear()
 	GameData.item_nodes.clear()
 	GameData.npc_nodes.clear()
+	GameData.tile_item.clear()
 	
 	LoadSaveController.load_game(save_file)
