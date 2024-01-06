@@ -23,3 +23,9 @@ func _get_next_id() -> int:
 
 func _get_tile_id(cell:Vector2i) -> String:
 	return str(cell.x,"_",cell.y)
+
+func _reset():
+	tile_map.clear()
+	item_nodes.clear()
+	npc_nodes.clear()
+	tile_item.clear()
