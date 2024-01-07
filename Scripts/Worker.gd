@@ -56,10 +56,3 @@ func _on_navigation_agent_2d_velocity_computed(safe_velocity):
 
 func _on_debug_walk_to(pos:Vector2):
 	nav_agent.target_position = pos
-	var clicked_cell:Vector2i = tile_map.local_to_map(pos)
-	var atlas_coords = tile_map.get_cell_atlas_coords(0, clicked_cell)
-
-	if (is_debug_print) : print("walking to ", pos)
-	if (is_debug_print) : print("cell location:",clicked_cell)
-	if (is_debug_print) : print("atlas coords(index 0):",atlas_coords)
-	if (is_debug_print) : print("alternate tile ID(index 0):",tile_map.get_cell_alternative_tile(0,clicked_cell))

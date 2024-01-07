@@ -2,12 +2,12 @@ extends Node
 
 class_name LoadSaveController
 
-static func save_game():
+static func save_game(file_name:String):
 	var dir:DirAccess = DirAccess.open("user://")
 	if (!dir.dir_exists(GameData.save_dir)):
 		dir.make_dir(GameData.save_dir)
 		
-	var save_file = FileAccess.open(str("user://",GameData.save_dir,"/savegame.save"), FileAccess.WRITE)
+	var save_file = FileAccess.open(str("user://",GameData.save_dir,"/",file_name), FileAccess.WRITE)
 	
 	var save_file_dict = {}
 	
@@ -77,13 +77,14 @@ static func load_game(save_file_name:String):
 		var node_data = json.get_data()
 		for layer_index in node_data["tile_layers"]:
 			for tile_dict in node_data["tile_layers"][layer_index]:
+				var cell_coords = Vector2i(tile_dict["pos_x"], tile_dict["pos_y"])
 				GameData.tile_map.set_cell(
 					int(layer_index),
-					Vector2i(tile_dict["pos_x"],
-					tile_dict["pos_y"]),
+					cell_coords,
 					tile_dict["source_id"],
 					Vector2i(tile_dict["atlas_coord_x"],
 					tile_dict["atlas_coord_y"]), 0)
+				GameData.tile_is_free[GameData._get_tile_id(cell_coords)] = true
 		for item_dict in node_data["items"]:
 			SignalController.emit_signal("load_item",
 				int(item_dict["id"]),

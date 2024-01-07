@@ -24,7 +24,12 @@ func _input(event: InputEvent):
 			if (GameData.button_hovered.begins_with("DebugLoadGameButton")):
 				SignalController.emit_signal("toggle_load_menu")
 		elif (GameData.game_mode == "action_walk"):
-			SignalController.emit_signal("debug_walk_to", get_global_mouse_position())
+			var cell:Vector2i = tile_map.local_to_map(get_global_mouse_position())
+			var tile_id:String = GameData._get_tile_id(cell)
+			if (GameData.tile_item.has(tile_id)):
+				SignalController.emit_signal("interact_item", GameData.tile_item[tile_id])
+			else:
+				SignalController.emit_signal("debug_walk_to", get_global_mouse_position())
 		elif (GameData.game_mode == "action_build"):
 			if (MoneyController._can_afford_build()):
 				MoneyController._purchase_build()

@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://310wfvejf6ge"]
+
+[ext_resource type="Texture2D" uid="uid://bfgliaqa2ed7q" path="res://Assets/Sprites/furniture_spritesheet.png" id="1_4n4it"]
+
+[node name="Interaction_1" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture_filter = 1
+texture = ExtResource("1_4n4it")
+offset = Vector2(0, -12.5)
+region_enabled = true
+region_rect = Rect2(0, 86, 34, 42)
+
+[node name="TileBlockable" type="Node2D" parent="."]
+
+[node name="TileInteraction" type="Node2D" parent="."]
+position = Vector2(-15, 8)
+
+[node name="TileInteraction2" type="Node2D" parent="."]
+position = Vector2(15, 8)

@@ -5,7 +5,10 @@ extends Node
 var tile_map: TileMap
 var item_nodes:Dictionary = {} #id_Node2D
 var npc_nodes:Dictionary = {} #id_Node2D
-var tile_item:Dictionary = {} #[x][y]_id
+var tile_item:Dictionary = {} #tileId_id
+var tile_is_free:Dictionary = {} #tileID_bool
+var worker_is_free:Dictionary = {} #id_bool
+# remember to clear Dictionary in _reset()!
 
 var game_mode: String = ""
 var button_hovered: String = ""
@@ -25,7 +28,11 @@ func _get_tile_id(cell:Vector2i) -> String:
 	return str(cell.x,"_",cell.y)
 
 func _reset():
+	for id in item_nodes: item_nodes[id].queue_free()
+	for id in npc_nodes: npc_nodes[id].queue_free()
 	tile_map.clear()
 	item_nodes.clear()
 	npc_nodes.clear()
 	tile_item.clear()
+	tile_is_free.clear()
+	worker_is_free.clear()

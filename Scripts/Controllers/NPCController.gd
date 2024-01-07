@@ -13,3 +13,4 @@ func _on_load_npc(id:int, pos_x:int, pos_y:int):
 	npc.position = Vector2(pos_x, pos_y)
 	add_child(npc)
 	GameData.npc_nodes[id] = npc
+	GameData.worker_is_free[id] = true
