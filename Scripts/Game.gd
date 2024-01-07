@@ -5,7 +5,8 @@ func _ready():
 	SignalController.connect("load_game", self._on_load_game)
 	
 	GameData.game_mode = "action_walk"
-	LoadSaveController.save_game()
+	LoadSaveController.save_game("savegame.save")
+	LoadSaveController.load_game("savegame.save")
 
 func _process(_delta):
 	pass
