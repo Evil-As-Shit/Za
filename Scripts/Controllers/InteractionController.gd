@@ -21,7 +21,7 @@ func _on_interact_item(id:int):
 				GameData.npc_nodes[worker_id]._on_debug_walk_to(child.global_position)
 				return
 
-func _get_nearest_worker(coor:Vector2i) -> int:
+func _get_nearest_worker(coord:Vector2i) -> int:
 	var closest_distance = INF
 	for worker_id in GameData.npc_nodes:
 		if (GameData.worker_is_free[worker_id]): return worker_id
