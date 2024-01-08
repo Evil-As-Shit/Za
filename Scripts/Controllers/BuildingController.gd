@@ -42,13 +42,23 @@ func _on_build_complete():
 	preview_build = null
 	GameData.item_to_build = ""
 
-func _set_tile_blockables(id:int, item:Node):
+func _get_tile_blockables(item:Node) -> Array:
+	var blockables:Array = []
 	for child in item.get_children():
-		if (child.name.begins_with("TileBlockable")):
-			var cell = tile_map.local_to_map(child.global_position)
-			var atlas_coords = tile_map.get_cell_atlas_coords(0, cell)
-			tile_map.set_cell(0, cell, 1, atlas_coords)
-			GameData.tile_item[GameData._get_tile_id(cell)] = id
+		if (child.name.begins_with("Rot_") && child.visible == true):
+			for subchild in child.get_children():
+				if (subchild.name.begins_with("TileBlockable")):
+					blockables.append(subchild)
+	print("size of blockables: ",blockables.size())
+	return blockables
+
+func _set_tile_blockables(id:int, item:Node):
+	for blockable in ItemController._get_blockables(item):
+		var cell = tile_map.local_to_map(blockable.global_position)
+		var atlas_coords = tile_map.get_cell_atlas_coords(0, cell)
+		tile_map.set_cell(0, cell, 1, atlas_coords)
+		GameData.tile_item[GameData._get_tile_id(cell)] = id
+	GameData.item_nodes[id] = item
 
 func _clear_preview():
 	if (preview_build != null):
@@ -59,21 +69,20 @@ func _clear_preview():
 func _get_preview_tile_pos() -> Vector2i:
 	var pos:Vector2i = vector2i_null
 	var is_buildable:bool = true
-	for child in preview_build.get_children():
-		if (child.name.begins_with("TileBlockable")):
-			var clicked_cell = tile_map.local_to_map(tile_map.get_local_mouse_position() + child.position)
-			var cell_id:int = tile_map.get_cell_source_id(0, clicked_cell)
-			if (cell_id == 0):
-				if (pos == vector2i_null): pos = tile_map.map_to_local(clicked_cell)
-			else:
-				is_buildable = false
+	for blockable in ItemController._get_blockables(preview_build):
+		var clicked_cell = tile_map.local_to_map(tile_map.get_local_mouse_position() + blockable.position)
+		var cell_id:int = tile_map.get_cell_source_id(0, clicked_cell)
+		if (cell_id == 0):
+			if (pos == vector2i_null): pos = tile_map.map_to_local(clicked_cell)
+		else:
+			is_buildable = false
 	if (is_buildable): return pos
 	return vector2i_null
 
-func _on_load_item(id:int, scene_file_name:String, pos_x:int, pos_y:int):
+func _on_load_item(id:int, scene_file_name:String, pos_x:int, pos_y:int, rot:int):
 	var path = str("res://Scenes/Furniture/", scene_file_name, ".tscn")
 	var item:Node2D = load(path).instantiate()
 	item.position = Vector2(pos_x, pos_y)
 	add_child(item)
+	RotationController._rotate(item, rot)
 	_set_tile_blockables(id, item)
-	GameData.item_nodes[id] = item

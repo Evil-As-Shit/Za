@@ -4,6 +4,7 @@ extends Node
 
 var tile_map: TileMap
 var item_nodes:Dictionary = {} #id_Node2D
+var item_rot:Dictionary = {} #id_int 0,1,2, or 3
 var npc_nodes:Dictionary = {} #id_Node2D
 var tile_item:Dictionary = {} #tileId_id
 var tile_is_free:Dictionary = {} #tileID_bool

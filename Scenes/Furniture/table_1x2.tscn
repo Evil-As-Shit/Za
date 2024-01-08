@@ -5,7 +5,11 @@
 [node name="Table_1x2" type="Node2D"]
 y_sort_enabled = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Rot_0" type="Node2D" parent="."]
+visible = false
+y_sort_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Rot_0"]
 y_sort_enabled = true
 texture_filter = 1
 texture = ExtResource("1_jpcxa")
@@ -13,7 +17,7 @@ offset = Vector2(-4.5, -13.5)
 region_enabled = true
 region_rect = Rect2(0, 42, 25, 44)
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
+[node name="Sprite2D2" type="Sprite2D" parent="Rot_0"]
 y_sort_enabled = true
 texture_filter = 1
 position = Vector2(20, -8)
@@ -22,8 +26,15 @@ offset = Vector2(0.5, -5.5)
 region_enabled = true
 region_rect = Rect2(25, 42, 25, 44)
 
-[node name="Sprite2D3" type="Sprite2D" parent="."]
-visible = false
+[node name="TileBlockable" type="Node2D" parent="Rot_0"]
+
+[node name="TileBlockable2" type="Node2D" parent="Rot_0"]
+position = Vector2(17, -7)
+
+[node name="Rot_1" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Rot_1"]
 y_sort_enabled = true
 texture_filter = 1
 texture = ExtResource("1_jpcxa")
@@ -31,8 +42,7 @@ offset = Vector2(4.5, -13.5)
 region_enabled = true
 region_rect = Rect2(75, 42, 25, 44)
 
-[node name="Sprite2D4" type="Sprite2D" parent="."]
-visible = false
+[node name="Sprite2D2" type="Sprite2D" parent="Rot_1"]
 y_sort_enabled = true
 texture_filter = 1
 position = Vector2(-21, -8)
@@ -41,7 +51,7 @@ offset = Vector2(0.5, -5.5)
 region_enabled = true
 region_rect = Rect2(50, 42, 25, 44)
 
-[node name="TileBlockable" type="Node2D" parent="."]
+[node name="TileBlockable" type="Node2D" parent="Rot_1"]
 
-[node name="TileBlockable2" type="Node2D" parent="."]
-position = Vector2(17, -7)
+[node name="TileBlockable2" type="Node2D" parent="Rot_1"]
+position = Vector2(-17, -7)

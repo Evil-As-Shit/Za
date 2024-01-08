@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://duxjx3n2s3v5l"]
+
+[ext_resource type="Texture2D" uid="uid://bfgliaqa2ed7q" path="res://Assets/Sprites/furniture_spritesheet.png" id="1_pcfe2"]
+
+[node name="Table_1x2_rot" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+y_sort_enabled = true
+texture_filter = 1
+texture = ExtResource("1_pcfe2")
+offset = Vector2(-4.5, -13.5)
+region_enabled = true
+region_rect = Rect2(0, 42, 25, 44)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(20, -8)
+texture = ExtResource("1_pcfe2")
+offset = Vector2(0.5, -5.5)
+region_enabled = true
+region_rect = Rect2(25, 42, 25, 44)
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture_filter = 1
+texture = ExtResource("1_pcfe2")
+offset = Vector2(4.5, -13.5)
+region_enabled = true
+region_rect = Rect2(75, 42, 25, 44)
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(-21, -8)
+texture = ExtResource("1_pcfe2")
+offset = Vector2(0.5, -5.5)
+region_enabled = true
+region_rect = Rect2(50, 42, 25, 44)
+
+[node name="TileBlockable" type="Node2D" parent="."]
+
+[node name="TileBlockable2" type="Node2D" parent="."]
+position = Vector2(-17, -7)

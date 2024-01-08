@@ -39,7 +39,8 @@ static func save_game(file_name:String):
 			"id": key,
 			"pos_x": item.position.x,
 			"pos_y": item.position.y,
-			"scene_file_name": item.scene_file_path.split('/')[-1].replace(".tscn","")
+			"rot": ItemController._get_rot(item),
+			"scene_file_name": item.scene_file_path.split('/')[-1].replace(".tscn",""),
 		}
 		item_array.append(item_dict)
 		if (key > GameData.next_id): GameData.next_id = key
@@ -89,7 +90,8 @@ static func load_game(save_file_name:String):
 				int(item_dict["id"]),
 				item_dict["scene_file_name"],
 				int(item_dict["pos_x"]),
-				int(item_dict["pos_y"])
+				int(item_dict["pos_y"]),
+				int(item_dict["rot"])
 			)
 		for npc_dict in node_data["npcs"]:
 			SignalController.emit_signal("load_npc",
