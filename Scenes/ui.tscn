@@ -62,6 +62,13 @@ texture_normal = SubResource("AtlasTexture_xnhdu")
 stretch_mode = 3
 script = ExtResource("3_ucfmw")
 
+[node name="build_interaction_1" type="TextureButton" parent="Control/BoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_xnhdu")
+stretch_mode = 3
+script = ExtResource("3_ucfmw")
+
 [node name="debug_walk" type="Button" parent="Control/BoxContainer"]
 layout_mode = 2
 text = "Walk"

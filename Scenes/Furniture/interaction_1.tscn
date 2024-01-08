@@ -5,7 +5,10 @@
 [node name="Interaction_1" type="Node2D"]
 y_sort_enabled = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Rot_0" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Rot_0"]
 y_sort_enabled = true
 texture_filter = 1
 texture = ExtResource("1_4n4it")
@@ -13,10 +16,70 @@ offset = Vector2(0, -12.5)
 region_enabled = true
 region_rect = Rect2(0, 86, 34, 42)
 
-[node name="TileBlockable" type="Node2D" parent="."]
+[node name="TileBlockable" type="Node2D" parent="Rot_0"]
 
-[node name="TileInteraction" type="Node2D" parent="."]
+[node name="TileInteraction" type="Node2D" parent="Rot_0"]
 position = Vector2(-15, 8)
 
-[node name="TileInteraction2" type="Node2D" parent="."]
+[node name="TileInteraction2" type="Node2D" parent="Rot_0"]
 position = Vector2(15, 8)
+
+[node name="Rot_1" type="Node2D" parent="."]
+visible = false
+y_sort_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Rot_1"]
+y_sort_enabled = true
+texture_filter = 1
+texture = ExtResource("1_4n4it")
+offset = Vector2(0, -12.5)
+region_enabled = true
+region_rect = Rect2(34, 86, 34, 42)
+
+[node name="TileBlockable" type="Node2D" parent="Rot_1"]
+
+[node name="TileInteraction" type="Node2D" parent="Rot_1"]
+position = Vector2(-15, -8)
+
+[node name="TileInteraction2" type="Node2D" parent="Rot_1"]
+position = Vector2(-15, 8)
+
+[node name="Rot_2" type="Node2D" parent="."]
+visible = false
+y_sort_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Rot_2"]
+y_sort_enabled = true
+texture_filter = 1
+texture = ExtResource("1_4n4it")
+offset = Vector2(0, -12.5)
+region_enabled = true
+region_rect = Rect2(68, 86, 34, 42)
+
+[node name="TileBlockable" type="Node2D" parent="Rot_2"]
+
+[node name="TileInteraction" type="Node2D" parent="Rot_2"]
+position = Vector2(15, -8)
+
+[node name="TileInteraction2" type="Node2D" parent="Rot_2"]
+position = Vector2(-15, -8)
+
+[node name="Rot_3" type="Node2D" parent="."]
+visible = false
+y_sort_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Rot_3"]
+y_sort_enabled = true
+texture_filter = 1
+texture = ExtResource("1_4n4it")
+offset = Vector2(0, -12.5)
+region_enabled = true
+region_rect = Rect2(102, 86, 34, 42)
+
+[node name="TileBlockable" type="Node2D" parent="Rot_3"]
+
+[node name="TileInteraction" type="Node2D" parent="Rot_3"]
+position = Vector2(15, 8)
+
+[node name="TileInteraction2" type="Node2D" parent="Rot_3"]
+position = Vector2(15, -8)

@@ -6,6 +6,7 @@ static var cost_dict = {
 	"table_1x1": 1,
 	"table_1x2": 2,
 	"table_2x2": 3,
+	"interaction_1": 1,
 }
 
 # Called when the node enters the scene tree for the first time.
