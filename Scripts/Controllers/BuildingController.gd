@@ -33,6 +33,7 @@ func _on_build(to_build:String):
 	var path = str("res://Scenes/Furniture/", to_build, ".tscn")
 	preview_build = load(path).instantiate()
 	add_child(preview_build)
+	RotationController._set_rotate(preview_build, 0)
 	GameData.item_to_build = to_build
 
 func _on_build_complete():
