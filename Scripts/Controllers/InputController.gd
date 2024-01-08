@@ -39,6 +39,9 @@ func _input(event: InputEvent):
 				print("You can't afford that!")
 		else:
 			print("InputController: I don't know what to do! ", GameData.button_hovered)
+	elif (event.is_action_pressed("click_right")):
+		if (GameData.game_mode == "action_build"):
+			SignalController.emit_signal("build_rotate")
 	elif (event is InputEventMouseMotion):
 		var pos = get_global_mouse_position()
 		var cell:Vector2i = tile_map.local_to_map(pos)

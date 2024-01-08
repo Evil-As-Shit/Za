@@ -10,6 +10,7 @@ func _ready():
 	tile_map = GameData.tile_map
 	SignalController.build_start.connect(self._on_build)
 	SignalController.build_complete.connect(self._on_build_complete)
+	SignalController.build_rotate.connect(self._on_build_rotate)
 	SignalController.load_item.connect(self._on_load_item)
 	
 #	set current item tiles
@@ -41,6 +42,10 @@ func _on_build_complete():
 	_set_tile_blockables(GameData._get_next_id(), preview_build)
 	preview_build = null
 	GameData.item_to_build = ""
+
+func _on_build_rotate():
+	if (preview_build == null): return
+	RotationController._rotate(preview_build)
 
 func _get_tile_blockables(item:Node) -> Array:
 	var blockables:Array = []
@@ -84,5 +89,5 @@ func _on_load_item(id:int, scene_file_name:String, pos_x:int, pos_y:int, rot:int
 	var item:Node2D = load(path).instantiate()
 	item.position = Vector2(pos_x, pos_y)
 	add_child(item)
-	RotationController._rotate(item, rot)
+	RotationController._set_rotate(item, rot)
 	_set_tile_blockables(id, item)

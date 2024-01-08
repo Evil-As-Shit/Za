@@ -2,7 +2,7 @@ extends Node
 
 class_name RotationController
 
-static func _rotate(node:Node2D, rot:int):
+static func _set_rotate(node:Node2D, rot:int):
 	var has_rot_node:bool = false
 	for child in node.get_children():
 		if (child.name.begins_with("Rot_")): has_rot_node = true
@@ -20,3 +20,10 @@ static func _rotate(node:Node2D, rot:int):
 	for child in node.get_children():
 		if (child.name.begins_with("Rot_")): child.visible = false
 		if (child.name == str("Rot_",rot)): child.visible = true
+
+static func _rotate(node:Node2D):
+	var rot:int = ItemController._get_rot(node)
+	for child in node.get_children(): child.visible = false
+	var rot_name:String = str("Rot_",rot + 1)
+	if (node.has_node(rot_name) == false): rot_name = "Rot_0"
+	node.get_node(rot_name).visible = true
