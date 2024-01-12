@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bunshmwa043c4"]
+[gd_scene load_steps=12 format=3 uid="uid://bunshmwa043c4"]
 
 [ext_resource type="Script" path="res://Scripts/GUI/ui.gd" id="1_qf18t"]
 [ext_resource type="Texture2D" uid="uid://bfgliaqa2ed7q" path="res://Assets/Sprites/furniture_spritesheet.png" id="3_37igo"]
@@ -17,7 +17,15 @@ region = Rect2(0, 42, 50, 42)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xnhdu"]
 atlas = ExtResource("3_37igo")
-region = Rect2(100, 33, 66, 54)
+region = Rect2(100, 32, 66, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04n67"]
+atlas = ExtResource("3_37igo")
+region = Rect2(0, 86, 34, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1pgk"]
+atlas = ExtResource("3_37igo")
+region = Rect2(0, 128, 34, 34)
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_qf18t")
@@ -65,7 +73,14 @@ script = ExtResource("3_ucfmw")
 [node name="build_interaction_1" type="TextureButton" parent="Control/BoxContainer"]
 texture_filter = 1
 layout_mode = 2
-texture_normal = SubResource("AtlasTexture_xnhdu")
+texture_normal = SubResource("AtlasTexture_04n67")
+stretch_mode = 3
+script = ExtResource("3_ucfmw")
+
+[node name="build_bin" type="TextureButton" parent="Control/BoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_h1pgk")
 stretch_mode = 3
 script = ExtResource("3_ucfmw")
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bqctsts4t2lcc"]
+[gd_scene load_steps=29 format=3 uid="uid://bqctsts4t2lcc"]
 
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_0f33u"]
 [ext_resource type="PackedScene" uid="uid://bunshmwa043c4" path="res://Scenes/ui.tscn" id="1_7ptmq"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://maqeehcp8lf3" path="res://Scenes/Furniture/table_2x2.tscn" id="9_rdjt5"]
 [ext_resource type="Script" path="res://Scripts/GUI/Cursor.gd" id="10_unskv"]
 [ext_resource type="PackedScene" uid="uid://310wfvejf6ge" path="res://Scenes/Furniture/interaction_1.tscn" id="10_w3i38"]
+[ext_resource type="PackedScene" uid="uid://bcpq7ispulvk0" path="res://Scenes/Furniture/bin.tscn" id="11_3c3hj"]
 [ext_resource type="Script" path="res://Scripts/Controllers/InteractionController.gd" id="12_4tv76"]
 [ext_resource type="Script" path="res://Scripts/Controllers/NPCController.gd" id="13_e7pda"]
 [ext_resource type="PackedScene" uid="uid://c6cq0tjrd6lvd" path="res://Scenes/Furniture/table_1x2.tscn" id="14_xn3jh"]
@@ -282,9 +283,6 @@ script = ExtResource("3_dura0")
 [node name="Table_1x1" parent="BuildingController" instance=ExtResource("9_hbtpm")]
 position = Vector2(16, -9)
 
-[node name="Table_1x12" parent="BuildingController" instance=ExtResource("9_hbtpm")]
-position = Vector2(96, 15)
-
 [node name="Table_1x23" parent="BuildingController" instance=ExtResource("14_xn3jh")]
 position = Vector2(64, 15)
 
@@ -292,7 +290,10 @@ position = Vector2(64, 15)
 position = Vector2(-32, 32)
 
 [node name="Interaction_1" parent="BuildingController" instance=ExtResource("10_w3i38")]
-position = Vector2(31, 31)
+position = Vector2(32, -49)
+
+[node name="Bin" parent="BuildingController" instance=ExtResource("11_3c3hj")]
+position = Vector2(32, 27)
 
 [node name="InputController" type="Node2D" parent="."]
 script = ExtResource("4_lk51g")
