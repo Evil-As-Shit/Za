@@ -18,7 +18,8 @@ func _on_interact_item(id:int):
 			if (worker_id != -1):
 				GameData.tile_is_free[cell_id] = false
 				GameData.worker_is_free[worker_id] = false
-				GameData.npc_nodes[worker_id]._on_debug_walk_to(child.global_position)
+				var goal = InteractionItemGoal.new(worker_id, id, child.global_position)
+				GameData.worker_brain[worker_id].add(goal)
 				return
 
 func _get_nearest_worker(coord:Vector2i) -> int:

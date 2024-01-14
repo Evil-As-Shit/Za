@@ -7,6 +7,10 @@ func _ready():
 	for child in get_children():
 		GameData.npc_nodes[GameData._get_next_id()] = child
 
+func _process(delta:float):
+	for id in GameData.worker_brain:
+		GameData.worker_brain[id]._update(delta)
+
 func _on_load_npc(id:int, pos_x:int, pos_y:int):
 	var path = str("res://Scenes/worker.tscn")
 	var npc:Node2D = load(path).instantiate()
@@ -14,3 +18,4 @@ func _on_load_npc(id:int, pos_x:int, pos_y:int):
 	add_child(npc)
 	GameData.npc_nodes[id] = npc
 	GameData.worker_is_free[id] = true
+	GameData.worker_brain[id] = GoalSequence.new()

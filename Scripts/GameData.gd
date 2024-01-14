@@ -9,6 +9,7 @@ var npc_nodes:Dictionary = {} #id_Node2D
 var tile_item:Dictionary = {} #tileId_id
 var tile_is_free:Dictionary = {} #tileID_bool
 var worker_is_free:Dictionary = {} #id_bool
+var worker_brain:Dictionary = {} #id_GoalSequence
 # remember to clear Dictionary in _reset()!
 
 var game_mode: String = ""
