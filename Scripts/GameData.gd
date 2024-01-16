@@ -2,14 +2,24 @@ extends Node
 
 #Autoloaded
 
+class RecipeItem:
+	var type:String = "" # the kind of food e.g. water, dough
+	var get_date:int = 0 # the day it was obtained/created
+	var quality:int = 0 # the quality of the food, ten being best, zero being trash
+	func _init(type, get_date, quality):
+		self.type = type
+		self.get_date = get_date
+		self.quality = quality
+
 var tile_map: TileMap
-var item_nodes:Dictionary = {} #id_Node2D
-var item_rot:Dictionary = {} #id_int 0,1,2, or 3
-var npc_nodes:Dictionary = {} #id_Node2D
-var tile_item:Dictionary = {} #tileId_id
-var tile_is_free:Dictionary = {} #tileID_bool
-var worker_is_free:Dictionary = {} #id_bool
-var worker_brain:Dictionary = {} #id_GoalSequence
+var item_nodes:Dictionary = {} # id_Node2D
+var item_rot:Dictionary = {} # id_int 0,1,2, or 3
+var npc_nodes:Dictionary = {} # id_Node2D
+var tile_item:Dictionary = {} # tileId_id
+var tile_is_free:Dictionary = {} # tileID_bool
+var worker_is_free:Dictionary = {} # id_bool
+var worker_brain:Dictionary = {} # id_GoalSequence
+var entity_inventorys:Dictionary = {} # id_Array[RecipeItem]
 # remember to clear Dictionary in _reset()!
 
 var game_mode: String = ""

@@ -1,6 +1,5 @@
 extends Node2D
 
-
 func _ready():
 	SignalController.connect("load_game", self._on_load_game)
 	

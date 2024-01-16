@@ -19,3 +19,4 @@ func _on_load_npc(id:int, pos_x:int, pos_y:int):
 	GameData.npc_nodes[id] = npc
 	GameData.worker_is_free[id] = true
 	GameData.worker_brain[id] = GoalSequence.new()
+	GameData.entity_inventorys[id] = []
