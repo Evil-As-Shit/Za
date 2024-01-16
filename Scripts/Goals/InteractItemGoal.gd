@@ -26,5 +26,5 @@ func _update(delta:float):
 			inventory.append(GameData.RecipeItem.new("output item 2", 0, 0))
 			print("My name is ",_owner_id," and I'm holding ",GameData.entity_inventorys[_owner_id].size()," things")
 			for inv in GameData.entity_inventorys[_owner_id]:
-				inv as GameData.RecipeItem
-				print(" ",inv.type)
+				var inv2:GameData.RecipeItem = inv
+				print(" ",inv2.type)

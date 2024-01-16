@@ -29,14 +29,6 @@ func set_current_state(new_state):
 			state_machine.travel("Walk")
 	current_state = new_state
 
-func _input(event):
-#	if event.is_action_pressed("click_right"):
-#		var clicked_cell = tile_map.local_to_map(tile_map.get_local_mouse_position())
-#		var atlas_coords = tile_map.get_cell_atlas_coords(0, clicked_cell)
-#		tile_map.set_cell(0,clicked_cell,1,atlas_coords)
-#		if (is_debug_print) : print("cell changed")
-	pass
-
 func _physics_process(_delta:float)->void:
 	if nav_agent.is_navigation_finished():
 		current_state = STATE.IDLE

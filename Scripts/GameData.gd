@@ -6,10 +6,10 @@ class RecipeItem:
 	var type:String = "" # the kind of food e.g. water, dough
 	var get_date:int = 0 # the day it was obtained/created
 	var quality:int = 0 # the quality of the food, ten being best, zero being trash
-	func _init(type, get_date, quality):
-		self.type = type
-		self.get_date = get_date
-		self.quality = quality
+	func _init(_type, _get_date, _quality):
+		type = _type
+		get_date = _get_date
+		quality = _quality
 
 var tile_map: TileMap
 var item_nodes:Dictionary = {} # id_Node2D

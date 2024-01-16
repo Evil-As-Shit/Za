@@ -10,7 +10,7 @@ func _init(owner_id:int, pos:Vector2):
 	
 	GameData.npc_nodes[owner_id]._on_debug_walk_to(pos)
 
-func _update(delta:float):
+func _update(_delta:float):
 	var node:Node2D = GameData.npc_nodes[_owner_id]
 	var pos:Vector2 = node.position
 	

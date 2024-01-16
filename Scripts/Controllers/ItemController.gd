@@ -14,11 +14,11 @@ static func _get_rot(item:Node) -> int:
 			return int(child.name.replace("Rot_", ""))
 	return 0
 
-static func _get_nodes_begin_with(item:Node, name:String) -> Array:
+static func _get_nodes_begin_with(item:Node, s:String) -> Array:
 	var blockables:Array = []
 	for child in item.get_children():
 		if (child.name.begins_with("Rot_") && child.visible == true):
 			for subchild in child.get_children():
-				if (subchild.name.begins_with(name)):
+				if (subchild.name.begins_with(s)):
 					blockables.append(subchild)
 	return blockables
