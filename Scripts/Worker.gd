@@ -1,5 +1,7 @@
+class_name Worker
 extends CharacterBody2D
 
+@export var stats = "Vince_Cleaner_35_1_2_3_4"
 @onready var animation_tree = $AnimationTree
 @onready var state_machine = animation_tree.get("parameters/playback")
 @onready var nav_agent : NavigationAgent2D = get_node("NavigationAgent2D")

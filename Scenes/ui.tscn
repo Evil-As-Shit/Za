@@ -133,12 +133,12 @@ script = ExtResource("6_rrngn")
 layout_mode = 2
 script = ExtResource("7_mfxrb")
 
-[node name="Panel4" type="Panel" parent="Control/HBoxContainer/UINPCImage"]
+[node name="PanelTop" type="Panel" parent="Control/HBoxContainer/UINPCImage"]
 custom_minimum_size = Vector2(256, 256)
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="TextureRect2" type="TextureRect" parent="Control/HBoxContainer/UINPCImage/Panel4"]
+[node name="TextureRect" type="TextureRect" parent="Control/HBoxContainer/UINPCImage/PanelTop"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
@@ -155,30 +155,30 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_ibhuc")
 expand_mode = 3
 
-[node name="Panel" type="Panel" parent="Control/HBoxContainer/UINPCImage"]
+[node name="PanelBottom" type="Panel" parent="Control/HBoxContainer/UINPCImage"]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/HBoxContainer/UINPCImage/Panel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/HBoxContainer/UINPCImage/PanelBottom"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 26.0
 grow_horizontal = 2
 
-[node name="Label" type="Label" parent="Control/HBoxContainer/UINPCImage/Panel/HBoxContainer"]
+[node name="LabelName" type="Label" parent="Control/HBoxContainer/UINPCImage/PanelBottom/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 text = "Vince"
 vertical_alignment = 2
 
-[node name="Panel" type="Panel" parent="Control/HBoxContainer/UINPCImage/Panel/HBoxContainer"]
+[node name="Panel" type="Panel" parent="Control/HBoxContainer/UINPCImage/PanelBottom/HBoxContainer"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label2" type="Label" parent="Control/HBoxContainer/UINPCImage/Panel/HBoxContainer"]
+[node name="LabelType" type="Label" parent="Control/HBoxContainer/UINPCImage/PanelBottom/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -186,7 +186,7 @@ text = "Worker"
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="Label3" type="Label" parent="Control/HBoxContainer/UINPCImage/Panel"]
+[node name="LabelActivity" type="Label" parent="Control/HBoxContainer/UINPCImage/PanelBottom"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0

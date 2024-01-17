@@ -49,11 +49,14 @@ static func save_game(file_name:String):
 	# NPCs
 	var npc_array:Array = []
 	for key in GameData.npc_nodes:
-		var npc:Node2D = GameData.npc_nodes[key]
+		var npc:Worker = GameData.npc_nodes[key]
+		var stat:String = npc.stats
+		if (GameData.worker_stats.has(key)): stat = GameData.worker_stats[key]
 		var npc_dict = {
 			"id": key,
 			"pos_x": npc.position.x,
 			"pos_y": npc.position.y,
+			"stats": stat,
 		}
 		npc_array.append(npc_dict)
 		if (key > GameData.next_id): GameData.next_id = key
@@ -97,5 +100,6 @@ static func load_game(save_file_name:String):
 			SignalController.emit_signal("load_npc",
 				int(npc_dict["id"]),
 				int(npc_dict["pos_x"]),
-				int(npc_dict["pos_y"])
+				int(npc_dict["pos_y"]),
+				npc_dict["stats"],
 			)

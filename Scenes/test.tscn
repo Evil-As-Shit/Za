@@ -316,6 +316,7 @@ script = ExtResource("13_e7pda")
 
 [node name="Worker" parent="NPCController" instance=ExtResource("1_vr3rk")]
 position = Vector2(134, 47)
+stats = "Ant_Wiper_39_5_6_7_8"
 
 [node name="Worker3" parent="NPCController" instance=ExtResource("1_vr3rk")]
 position = Vector2(46, -1)
