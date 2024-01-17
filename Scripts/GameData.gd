@@ -20,7 +20,10 @@ var tile_is_free:Dictionary = {} # tileID_bool
 var worker_is_free:Dictionary = {} # id_bool
 var worker_brain:Dictionary = {} # id_GoalSequence
 var entity_inventorys:Dictionary = {} # id_Array[RecipeItem]
+var select_area_entitys:Dictionary = { null: -1 } # Area2D_id
 # remember to clear Dictionary in _reset()!
+
+var area_hovered:Area2D = null
 
 var game_mode: String = ""
 var button_hovered: String = ""
@@ -48,3 +51,4 @@ func _reset():
 	tile_item.clear()
 	tile_is_free.clear()
 	worker_is_free.clear()
+	select_area_entitys = { null: -1 }

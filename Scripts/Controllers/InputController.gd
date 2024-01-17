@@ -5,7 +5,7 @@ var tile_map:TileMap
 func _ready():
 	tile_map = GameData.tile_map
 	print("Viewport resolution is: ", get_viewport().get_visible_rect().size)
-	pass
+	SignalController.hover_over.connect(self.on_hover_over)
 
 func _process(_delta):
 	
@@ -53,3 +53,9 @@ func _input(event: InputEvent):
 		var is_debug_print = false
 		if (is_debug_print) : print("Mouse Motion at ", pos)
 		if (is_debug_print) : print("cell location:",cell)
+
+func on_hover_over(area:Area2D, b:bool):
+	if (b):
+		GameData.area_hovered = area
+	elif (GameData.area_hovered == area):
+		GameData.area_hovered = null

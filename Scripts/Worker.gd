@@ -10,14 +10,13 @@ var time = false
 var move_direction = Vector2.ZERO
 var current_state = STATE.IDLE : set = set_current_state
 
-var tile_map:TileMap
-
 var is_debug_print: bool = false
 
 func _ready():
-	tile_map = GameData.tile_map
 	
 	SignalController.debug_walk_to.connect(self._on_debug_walk_to)
+	get_node("Area2D").connect("mouse_entered", self.on_mouse_entered.bind(true))
+	get_node("Area2D").connect("mouse_exited", self.on_mouse_entered.bind(false))
 
 func set_current_state(new_state):
 	if(new_state == current_state):
@@ -49,3 +48,6 @@ func _on_navigation_agent_2d_velocity_computed(safe_velocity):
 
 func _on_debug_walk_to(pos:Vector2):
 	nav_agent.target_position = pos
+
+func on_mouse_entered(b:bool):
+	SignalController.emit_signal("hover_over", get_node("Area2D"), b)

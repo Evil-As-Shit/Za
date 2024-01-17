@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://b6pout81ffp32"]
+[gd_scene load_steps=29 format=3 uid="uid://b6pout81ffp32"]
 
 [ext_resource type="Script" path="res://Scripts/Worker.gd" id="1_he28q"]
 [ext_resource type="Texture2D" uid="uid://dvai5gichm5lc" path="res://Assets/Sprites/dood_walk.png" id="2_f4x45"]
@@ -342,6 +342,10 @@ _data = {
 "Walk_SW": SubResource("Animation_ffaab")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nfx58"]
+radius = 7.0
+height = 45.0
+
 [node name="Worker" type="CharacterBody2D"]
 y_sort_enabled = true
 motion_mode = 1
@@ -382,5 +386,13 @@ parameters/Walk/blend_position = Vector2(-0.168142, 0.40411)
 libraries = {
 "": SubResource("AnimationLibrary_3duw0")
 }
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -18)
+shape = SubResource("CapsuleShape2D_nfx58")
 
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]

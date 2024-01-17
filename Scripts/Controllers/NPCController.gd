@@ -20,3 +20,5 @@ func _on_load_npc(id:int, pos_x:int, pos_y:int):
 	GameData.worker_is_free[id] = true
 	GameData.worker_brain[id] = GoalSequence.new()
 	GameData.entity_inventorys[id] = []
+	GameData.select_area_entitys[npc.get_node("Area2D")] = id
+	

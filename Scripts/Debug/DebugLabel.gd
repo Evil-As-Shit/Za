@@ -9,5 +9,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	self.text = str("Button: ",GameData.button_hovered,"\n",
+	"Entity: ",GameData.select_area_entitys[GameData.area_hovered],"\n",
 	"Tile: ",GameData.tile_hovered,"\n",
 	"Item: ",GameData.item_hovered)
