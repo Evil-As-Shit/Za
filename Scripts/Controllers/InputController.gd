@@ -23,13 +23,6 @@ func _input(event: InputEvent):
 				GameData.button_hovered = ""
 			if (GameData.button_hovered.begins_with("DebugLoadGameButton")):
 				SignalController.emit_signal("toggle_load_menu")
-		elif (GameData.game_mode == "action_walk"):
-			var cell:Vector2i = tile_map.local_to_map(get_global_mouse_position())
-			var tile_id:String = GameData._get_tile_id(cell)
-			if (GameData.tile_item.has(tile_id)):
-				SignalController.emit_signal("interact_item", GameData.tile_item[tile_id])
-			else:
-				SignalController.emit_signal("debug_walk_to", get_global_mouse_position())
 		elif (GameData.game_mode == "action_build"):
 			if (MoneyController._can_afford_build()):
 				MoneyController._purchase_build()
@@ -38,10 +31,17 @@ func _input(event: InputEvent):
 			else:
 				print("You can't afford that!")
 		else:
-			print("InputController: I don't know what to do! ", GameData.button_hovered)
+			print("InputController: I don't know what to do! ")
 	elif (event.is_action_pressed("click_right")):
 		if (GameData.game_mode == "action_build"):
 			SignalController.emit_signal("build_rotate")
+		elif (GameData.game_mode == "action_walk"):
+			var cell:Vector2i = tile_map.local_to_map(get_global_mouse_position())
+			var tile_id:String = GameData._get_tile_id(cell)
+			if (GameData.tile_item.has(tile_id)):
+				SignalController.emit_signal("interact_item", GameData.tile_item[tile_id])
+			else:
+				SignalController.emit_signal("debug_walk_to", get_global_mouse_position())
 	elif (event is InputEventMouseMotion):
 		var pos = get_global_mouse_position()
 		var cell:Vector2i = tile_map.local_to_map(pos)
