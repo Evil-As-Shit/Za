@@ -31,7 +31,7 @@ func _input(event: InputEvent):
 			else:
 				print("You can't afford that!")
 		else:
-			print("InputController: I don't know what to do! ")
+			SignalController.emit_signal("gui_update_entity",GameData.select_area_entitys[GameData.area_hovered])
 	elif (event.is_action_pressed("click_right")):
 		if (GameData.game_mode == "action_build"):
 			SignalController.emit_signal("build_rotate")

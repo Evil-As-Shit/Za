@@ -14,3 +14,5 @@ signal load_tile(layer:int, coords:Vector2i, source_id:int, atlas_coords:Vector2
 signal load_game(save_file:String)
 signal interact_item(id:int)
 signal hover_over(area:Area2D, b:bool)
+
+signal gui_update_entity(id:int)
