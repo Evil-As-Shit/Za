@@ -65,6 +65,13 @@ func _set_tile_blockables(id:int, item:Node):
 		tile_map.set_cell(0, cell, 1, atlas_coords)
 		GameData.tile_item[GameData._get_tile_id(cell)] = id
 	GameData.item_nodes[id] = item
+	for area in ItemController._get_areas(item):
+		GameData.select_area_entitys[area] = id
+		area.connect("mouse_entered", self.on_mouse_entered.bind(area, true))
+		area.connect("mouse_exited", self.on_mouse_entered.bind(area, false))
+
+func on_mouse_entered(area:Area2D, b:bool):
+	SignalController.emit_signal("hover_over", area, b)
 
 func _clear_preview():
 	if (preview_build != null):

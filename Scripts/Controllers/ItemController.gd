@@ -2,6 +2,9 @@ extends Node
 
 class_name ItemController
 
+static func _get_areas(item:Node) -> Array:
+	return _get_nodes_begin_with(item, "Area2D")
+
 static func _get_blockables(item:Node) -> Array:
 	return _get_nodes_begin_with(item, "TileBlockable")
 
