@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dvai5gichm5lc" path="res://Assets/Sprites/dood_walk.png" id="5_ie1q8"]
 [ext_resource type="Script" path="res://Scripts/Debug/DebugLoadGameButton.gd" id="6_rrngn"]
 [ext_resource type="Script" path="res://Scripts/GUI/UINPCImage.gd" id="7_mfxrb"]
-[ext_resource type="Script" path="res://Scenes/UINPCStats.gd" id="9_3sov1"]
+[ext_resource type="Script" path="res://Scripts/GUI/UINPCStats.gd" id="9_bwqqy"]
 [ext_resource type="Script" path="res://Scripts/GUI/UINPCInventory.gd" id="9_k5ebk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bniil"]
@@ -201,7 +201,7 @@ text = "Making za"
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 0
-script = ExtResource("9_3sov1")
+script = ExtResource("9_bwqqy")
 
 [node name="Label" type="Label" parent="Control/HBoxContainer/UINPCStats"]
 layout_mode = 1

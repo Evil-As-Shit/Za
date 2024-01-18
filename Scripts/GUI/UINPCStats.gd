@@ -7,4 +7,3 @@ func _update(id:int):
 			"Hosp:",GameData.get_worker_stat(id, "abil_hospitable"),"\n",
 			"Stamina:",GameData.get_worker_stat(id, "abil_stamina"),"\n",
 			)
-	
