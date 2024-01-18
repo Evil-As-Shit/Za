@@ -22,3 +22,5 @@ func _on_load_npc(id:int, pos_x:int, pos_y:int, stats:String):
 	GameData.entity_inventorys[id] = []
 	GameData.select_area_entitys[npc.get_node("Area2D")] = id
 	GameData.worker_stats[id] = stats
+	var inventory:Array = GameData.entity_inventorys[id]
+	inventory.append(GameData.RecipeItem.new("water", 0, 0))
