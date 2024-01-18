@@ -1,7 +1,10 @@
 extends UINPC
 
 func _update(id:int):
-	var index:int = 0
+	if (not GameData.entity_inventorys.has(id)):
+		visible = false
+		return
+	visible = true
 	for i in $GridContainer.get_child_count():
 		var inventory = $GridContainer.get_child(i)
 		if (not inventory is InventoryPanel): continue

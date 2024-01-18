@@ -7,11 +7,5 @@ func _ready():
 			child.visible = false
 	
 func on_update_entity(id:int):
-	if (id == -1):
-		for child in get_children():
-			if child is UINPC: child.visible = false
-	else:
-		for child in get_children():
-			if child is UINPC:
-				child._update(id)
-				child.visible = true
+	for child in get_children():
+		if child is UINPC: child._update(id)
