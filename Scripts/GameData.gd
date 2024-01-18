@@ -11,20 +11,6 @@ class RecipeItem:
 		get_date = _get_date
 		quality = _quality
 
-func get_worker_stat(id:int, stat:String) -> String:
-	var index:int = -1
-	var statNames:Array = [
-			"name", "type", "age",
-			"abil_clean", "abil_cook", "abil_hospitable", "abil_stamina"]
-	for i in statNames.size():
-		if (statNames[i] == stat): index = i
-	if (index == -1):
-		print("'",stat,"' stat does not exist. Existing stats:")
-		for i in statNames.size():
-			print(" ",statNames[i])
-		return ""
-	return worker_stats[id].split('_')[index]
-
 var tile_map: TileMap
 var item_nodes:Dictionary = {} # id_Node2D
 var item_rot:Dictionary = {} # id_int 0,1,2, or 3
@@ -56,6 +42,20 @@ func _get_next_id() -> int:
 
 func _get_tile_id(cell:Vector2i) -> String:
 	return str(cell.x,"_",cell.y)
+
+func get_worker_stat(id:int, stat:String) -> String:
+	var index:int = -1
+	var statNames:Array = [
+			"name", "type", "age",
+			"abil_clean", "abil_cook", "abil_hospitable", "abil_stamina"]
+	for i in statNames.size():
+		if (statNames[i] == stat): index = i
+	if (index == -1):
+		print("'",stat,"' stat does not exist. Existing stats:")
+		for i in statNames.size():
+			print(" ",statNames[i])
+		return ""
+	return worker_stats[id].split('_')[index]
 
 func _reset():
 	for id in item_nodes: item_nodes[id].queue_free()
