@@ -22,6 +22,7 @@ var worker_brain:Dictionary = {} # id_GoalSequence
 var entity_inventorys:Dictionary = {} # id_Array[RecipeItem]
 var select_area_entitys:Dictionary = { null: -1 } # Area2D_id
 var worker_stats:Dictionary = {} # id_String
+var item_stats:Dictionary = {} # id_String
 # remember to clear Dictionary in _reset()!
 
 var area_hovered:Area2D = null
@@ -42,12 +43,18 @@ func _get_next_id() -> int:
 
 func _get_tile_id(cell:Vector2i) -> String:
 	return str(cell.x,"_",cell.y)
+	
+func get_item_stat(id:int, stat:String) -> String:
+	return get_stat(id, stat, GameData.item_stats, [
+			"name", "description",])
 
 func get_worker_stat(id:int, stat:String) -> String:
-	var index:int = -1
-	var statNames:Array = [
+	return get_stat(id, stat, GameData.worker_stats, [
 			"name", "type", "age",
-			"abil_clean", "abil_cook", "abil_hospitable", "abil_stamina"]
+			"abil_clean", "abil_cook", "abil_hospitable", "abil_stamina",])
+
+func get_stat(id:int, stat:String, stats_dict:Dictionary, statNames:Array):
+	var index:int = -1
 	for i in statNames.size():
 		if (statNames[i] == stat): index = i
 	if (index == -1):
@@ -55,7 +62,7 @@ func get_worker_stat(id:int, stat:String) -> String:
 		for i in statNames.size():
 			print(" ",statNames[i])
 		return ""
-	return worker_stats[id].split('_')[index]
+	return stats_dict[id].split('_')[index]
 
 func _reset():
 	for id in item_nodes: item_nodes[id].queue_free()
