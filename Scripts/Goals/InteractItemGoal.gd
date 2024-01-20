@@ -23,3 +23,5 @@ func _update(delta:float):
 			var inventory:Array = GameData.entity_inventorys[_owner_id]
 			inventory.append(GameData.RecipeItem.new("cheese", 0, 0))
 			inventory.append(GameData.RecipeItem.new("sauce", 0, 0))
+			SignalController.inventory_updated.emit(_item_id)
+			SignalController.inventory_updated.emit(_owner_id)
