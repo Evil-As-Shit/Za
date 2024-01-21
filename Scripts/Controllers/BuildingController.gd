@@ -69,7 +69,14 @@ func _set_tile_blockables(id:int, item:Node):
 		GameData.select_area_entitys[area] = id
 		area.connect("mouse_entered", self.on_mouse_entered.bind(area, true))
 		area.connect("mouse_exited", self.on_mouse_entered.bind(area, false))
-	GameData.entity_inventorys[id] = [GameData.RecipeItem.new("salt", 0, 0)]
+	GameData.entity_inventorys[id] = [
+		GameData.RecipeItem.new("salt", 0, 0),
+		GameData.RecipeItem.new("salt", 0, 0),
+		GameData.RecipeItem.new("salt", 0, 0),
+		GameData.RecipeItem.new("salt", 0, 0),
+		GameData.RecipeItem.new("salt", 0, 0),
+		GameData.RecipeItem.new("salt", 0, 0),
+		]
 
 func on_mouse_entered(area:Area2D, b:bool):
 	SignalController.emit_signal("hover_over", area, b)

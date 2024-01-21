@@ -20,8 +20,11 @@ func _update(delta:float):
 		var pos:Vector2 = node.position
 		
 		if (Utility.is_at(pos, _pos)):
-			var inventory:Array = GameData.entity_inventorys[_owner_id]
-			inventory.append(GameData.RecipeItem.new("cheese", 0, 0))
-			inventory.append(GameData.RecipeItem.new("sauce", 0, 0))
+			var inventory:Array = GameData.entity_inventorys[_item_id]
+			if (inventory.size() == 0): return
+			var recipe:GameData.RecipeItem = inventory[0]
+			inventory.remove_at(0)
+			inventory = GameData.entity_inventorys[_owner_id]
+			inventory.append(recipe)
 			SignalController.inventory_updated.emit(_item_id)
 			SignalController.inventory_updated.emit(_owner_id)
