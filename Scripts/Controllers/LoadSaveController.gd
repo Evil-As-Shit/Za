@@ -31,6 +31,17 @@ static func save_game(file_name:String):
 		layer_dict[i] = tile_array
 	save_file_dict["tile_layers"] = layer_dict
 	
+	# recipe items
+	var recipe_item_array:Array = []
+	for key in GameData.entity_inventorys:
+		for item in GameData.entity_inventorys[key]:
+			var recipe_item:GameData.RecipeItem = item
+			var item_dict = {
+				"type": recipe_item.type,
+				"get_date": recipe_item.get_date,
+				"quality": recipe_item.quality,
+			}
+	
 	# items
 	var item_array:Array = []
 	for key in GameData.item_nodes:
@@ -63,6 +74,19 @@ static func save_game(file_name:String):
 	save_file_dict["npcs"] = npc_array
 	
 	save_file.store_line(JSON.stringify(save_file_dict))
+
+static func get_inventory_save(id:int) -> String:
+	var s:String = ""
+	var recipe_item_array:Array = []
+	for key in GameData.entity_inventorys:
+		for item in GameData.entity_inventorys[key]:
+			var recipe_item:GameData.RecipeItem = item
+			var item_dict = {
+				"type": recipe_item.type,
+				"get_date": recipe_item.get_date,
+				"quality": recipe_item.quality,
+			}
+	return s
 
 static func load_game(save_file_name:String):
 	if not FileAccess.file_exists(str("user://",GameData.save_dir,"/",save_file_name)):
